@@ -1,0 +1,63 @@
+.progress-container {
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 600px;
+}
+
+.progress-info {
+    margin-bottom: 2rem;
+}
+
+.cow-container {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.cow-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+.cow-outline {
+    fill: none;
+    stroke: black;
+    stroke-width: 3;
+}
+
+.cow-fill {
+    transform-origin: bottom;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.liquid-wave {
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        d: path("M 0 50 Q 30 45, 50 50 T 100 50 V 100 H 0 Z");
+    }
+    50% {
+        d: path("M 0 50 Q 20 55, 50 50 T 100 50 V 100 H 0 Z");
+    }
+}
+
+/* Animation de pulsation quand complet */
+.cow-fill.complete {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+} 

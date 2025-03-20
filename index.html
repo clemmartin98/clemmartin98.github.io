@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viande Locale - Colis de viande en circuit court</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cow-progress.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#accueil">Viande Locale</a>
+            <div class="nav-links">
+                <a href="#qui-sommes-nous">Qui sommes-nous ?</a>
+                <a href="#nos-valeurs">Nos Valeurs</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Panier -->
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒
+        <span class="cart-count">0</span>
+    </div>
+
+    <div class="cart-panel">
+        <h3>Votre panier</h3>
+        <div class="cart-items">
+            <!-- Les articles seront ajoutés ici dynamiquement -->
+        </div>
+        <div class="cart-total">
+            <p>Total : <span class="cart-total-amount">0€</span></p>
+            <p>Acompte (20%) : <span class="cart-deposit-amount">0€</span></p>
+        </div>
+        <div class="cart-buttons">
+            <button class="button secondary" onclick="toggleCart()">Continuer mes achats</button>
+            <button class="button" onclick="checkout()">Payer l'acompte</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="section-content">
+            <h1>Viande locale en circuit court</h1>
+            <p>Des colis de viande de qualité, directement de notre ferme à votre table</p>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <h2>Réservations en cours</h2>
+                    <p>Déjà <span id="reserved-weight">0</span>kg réservés sur <span id="total-weight">400</span>kg disponibles</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+            </div>
+            <a href="#nos-colis" class="button">Réserver un colis</a>
+
+        </div>   
+
+    </section>
+
+    <section class="hero-spacer">
+        <div class="section-content">
+            <h2>Notre engagement pour une viande de qualité</h2>
+            <p>Depuis plus de 30 ans, notre famille s'engage à produire une viande d'exception en respectant nos valeurs : bien-être animal, traçabilité et durabilité.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Années d'expérience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Circuit court</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">400kg</div>
+                    <div class="stat-label">De viande disponible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qui-sommes-nous" class="section">
+        <div class="section-content">
+            <div class="about-text">
+                <h2>Qui sommes-nous ?</h2>
+                <p class="presentation">Éleveurs passionnés depuis plusieurs générations dans le magnifique Condroz, nous perpétuons une tradition d'excellence dans l'élevage bovin. Notre exploitation familiale, transmise de père en fils, est profondément ancrée dans cette région réputée pour ses terres fertiles et son savoir-faire agricole.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Nos Valeurs -->
+    <section class="values-section" id="nos-valeurs">
+        <div class="section-content">
+            <h2>Nos Valeurs</h2>
+            <p class="values-intro">
+                Notre engagement va au-delà de la simple production de viande. Nous défendons une approche éthique, durable et responsable de l'élevage, en accord avec nos valeurs fondamentales.
+            </p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Anti-Gaspillage</h3>
+                    <p class="value-description">
+                        Notre système de précommande garantit zéro gaspillage : nous ne procédons à l'abattage qu'une fois tous les colis réservés. Chaque partie de l'animal est valorisée, respectant ainsi la vie de nos bêtes et optimisant nos ressources.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Alimentation Durable</h3>
+                    <p class="value-description">
+                        Nos vaches sont nourries principalement avec des résidus agricoles revalorisés, notamment des pois. Cette approche circulaire réduit le gaspillage alimentaire tout en garantissant une alimentation saine et équilibrée pour nos bêtes.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Circuit Court</h3>
+                    <p class="value-description">
+                        De la ferme à votre assiette, nous privilégions les circuits courts. Cette approche directe réduit notre empreinte carbone, garantit la fraîcheur de nos produits et assure une rémunération juste pour notre travail d'éleveur.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Bien-être Animal</h3>
+                    <p class="value-description">
+                        Le respect du bien-être de nos animaux est primordial. Nos vaches évoluent en liberté dans nos prairies, bénéficient d'une alimentation naturelle et de soins attentifs. Nous leur assurons une vie digne et respectueuse.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nos-colis" class="section">
+        <div class="section-content">
+            <h2>Nos Colis</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/Digital-8925.webp" alt="Colis 5kg" class="product-image">
+                    <div class="product-header">
+                        <h3 class="product-title">Colis Découverte</h3>
+                        <p class="product-weight">5kg de viande</p>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-description">Parfait pour découvrir notre viande de qualité.</p>
+                        <ul class="product-details">
+                            <li>Steaks</li>
+                            <li>Haché</li>
+                            <li>Rôti</li>
+                        </ul>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">75€</div>
+                        <div class="deposit">Acompte : 15€</div>
+                        <button type="button" class="button" onclick="addToCart('petit', 75, 15)">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Digital-8925.webp" alt="Colis 10kg" class="product-image">
+                    <div class="product-header">
+                        <h3 class="product-title">Colis Familial</h3>
+                        <p class="product-weight">10kg de viande</p>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-description">Idéal pour une petite famille.</p>
+                        <ul class="product-details">
+                            <li>Haché</li>
+                            <li>Rôtis</li>
+                            <li>Carbonades</li>
+                        </ul>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">140€</div>
+                        <div class="deposit">Acompte : 28€</div>
+                        <button type="button" class="button" onclick="addToCart('moyen', 140, 28)">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Digital-8925.webp" alt="Colis 15kg" class="product-image">
+                    <div class="product-header">
+                        <h3 class="product-title">Colis Famille +</h3>
+                        <p class="product-weight">15kg de viande</p>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-description">Pour les familles nombreuses.</p>
+                        <ul class="product-details">
+                            <li>Rôtis</li>
+                            <li>Carbonades</li>
+                            <li>Côtes</li>
+                        </ul>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">195€</div>
+                        <div class="deposit">Acompte : 39€</div>
+                        <button type="button" class="button" onclick="addToCart('grand', 195, 39)">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Digital-8925.webp" alt="Colis 25kg" class="product-image">
+                    <div class="product-header">
+                        <h3 class="product-title">Colis Stock</h3>
+                        <p class="product-weight">25kg de viande</p>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-description">Solution pour remplir votre congélateur.</p>
+                        <ul class="product-details">
+                            <li>Carbonades</li>
+                            <li>Côtes</li>
+                            <li>Morceaux à mijoter</li>
+                        </ul>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">300€</div>
+                        <div class="deposit">Acompte : 60€</div>
+                        <button type="button" class="button" onclick="addToCart('stock', 300, 60)">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-content">
+            <h2>Contactez-nous</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="button">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Viande Locale</h3>
+                <p>Une production locale et responsable</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="#accueil">Accueil</a>
+                <a href="#nos-colis">Nos Colis</a>
+                <a href="#notre-engagement">Notre Engagement</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Tél : 01 23 45 67 89</p>
+                <p>Email : contact@viande-locale.fr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Viande Locale. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
